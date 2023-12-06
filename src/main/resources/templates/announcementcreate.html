@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Announcement</title>
+</head>
+<body>
+    <h1>Create Announcement</h1>
+    <br><hr>
+
+    <form method="POST" data-th-action="@{/announcements/processAnnouncement}" data-th-object="${announcement}">
+        <div>
+            <label for="annId">Announcement Id</label>
+            <br>
+            <input type="number" name="annId" id="annId" data-th-field="*{annId}" aria-describedby="annIdHelp">
+            <div id="annIdHelp">Only digits 111111 to 888888</div>
+            <div data-th-if="${#fields.hasErrors('annId')}" data-th-errors="*{annId}" data-th-errorclass="error"></div>
+        </div>
+        <div>
+            <label for="code">Announcement Code</label>
+            <br>
+            <input type="text" name="code" id="code" data-th-field="*{code}">
+            <div data-th-if="${#fields.hasErrors('code')}" data-th-errors="*{code}" data-th-errorclass="error"></div>
+        </div>
+        <div>
+            <label for="title">Announcement Title</label>
+            <br>
+            <input type="text" name="title" id="title" data-th-field="*{title}">
+            <div data-th-if="${#fields.hasErrors('title')}" data-th-errors="*{title}" data-th-errorclass="error"></div>
+        </div>
+        <div>
+            <label for="message">Message</label>
+            <br>
+            <textarea name="message" id="message" data-th-field="*{message}" rows="6"></textarea>
+            <div data-th-if="${#fields.hasErrors('message')}" data-th-errors="*{message}" data-th-errorclass="error"></div>
+        </div>
+        <div>
+            <label for="startDate">Announcement Start Date</label>
+            <br>
+            <input type="date" name="startDate" id="startDate" data-th-field="*{startDate}">
+            <div data-th-if="${#fields.hasErrors('startDate')}" data-th-errors="*{startDate}" data-th-errorclass="error"></div>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+</body>
+</html>
